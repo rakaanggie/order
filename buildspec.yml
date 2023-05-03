@@ -20,11 +20,11 @@ phases:
       - ECR_REPO=$AWS_ACCOUNT_ID.dkr.ecr.$ECR_REGION.amazonaws.com/$IMAGE_REPO
       - echo AWS_ACCESS_KEY=${AWS_ACCESS_KEY} >> .env.production
       - echo AWS_SECRET_KEY=${AWS_SECRET_KEY} >> .env.production
-      - echo AWS_DYNAMODB_TABLE=${AWS_DYNAMODB_TABLE} >> .env.production
+      - echo AWS_DYNAMODB_TABLE_PROD=${AWS_DYNAMODB_TABLE} >> .env.production
       - echo AWS_REGION=${AWS_REGION} >> .env.production
       - echo AWS_ACCESS_KEY=${AWS_ACCESS_KEY} >> .env.testing
       - echo AWS_SECRET_KEY=${AWS_SECRET_KEY} >> .env.testing
-      - echo AWS_DYNAMODB_TABLE=${AWS_DYNAMODB_TABLE} >> .env.testing
+      - echo AWS_DYNAMODB_TABLE_TEST=${AWS_DYNAMODB_TABLE} >> .env.testing
       - echo AWS_REGION=${AWS_REGION} >> .env.testing
   build:
     commands:
