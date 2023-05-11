@@ -6,9 +6,6 @@ env:
     ECR_REGION: us-east-1
     CONTAINER_NAME: lks-order-container
     IMAGE_REPO: lks-order-image
-    AWS_DYNAMODB_TABLE_TEST: lks-order-testing
-    AWS_DYNAMODB_TABLE_PROD: lks-order-production
-    AWS_REGION: us-east-1
 
 phases:
   install:
@@ -17,7 +14,7 @@ phases:
       docker: 20
   pre_build:
     commands:
-      - echo "Install dependencies and login into ECR"
+      - echo "Install Dependencies and login into ECR"
       - aws ecr get-login-password --region $ECR_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$ECR_REGION.amazonaws.com
       - ECR_REPO=$AWS_ACCOUNT_ID.dkr.ecr.$ECR_REGION.amazonaws.com/$IMAGE_REPO
       - echo AWS_ACCESS_KEY=${AWS_ACCESS_KEY} >> .env.production
@@ -26,7 +23,7 @@ phases:
       - echo AWS_REGION=${AWS_REGION} >> .env.production
       - echo AWS_ACCESS_KEY=${AWS_ACCESS_KEY} >> .env.testing
       - echo AWS_SECRET_KEY=${AWS_SECRET_KEY} >> .env.testing
-      - echo AWS_DYNAMODB_TABLE_TEST=${AWS_DYNAMODB_TABLE_TEST} >> .env.testing
+      - echo AWS_DYNAMODB_TABLE_PROD=${AWS_DYNAMODB_TABLE_PROD} >> .env.testing
       - echo AWS_REGION=${AWS_REGION} >> .env.testing
   build:
     commands:
@@ -40,8 +37,7 @@ phases:
       - echo "push image to ECR"
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$ECR_REGION.amazonaws.com/$IMAGE_REPO:$IMAGE_TAG
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $ECR_REPO:$IMAGE_TAG > imagedefinitions.json
-      - printf '{"AWSEBDockerrunVersion":"1","Image":{"Name":"405040917563.dkr.ecr.us-east-1.amazonaws.com/lks-order-image:latest","Update":"true"},"Ports":[{"ContainerPort":8000,"HostPort":80}]}' >> Dockerrun.aws.json
-      - echo "build complete"
+      - printf '{"AWSEBDockerrunVersion":"1","Image":{"Name":"405040917563.dkr.ecr.us-east-1.amazonaws.com/lks-order-image:latest","Update":"true"},"Ports":[{"ContainerPort":8000,"HostPort":80}]}' > Dockerrun.aws.json
 
 reports:
   test-report:
