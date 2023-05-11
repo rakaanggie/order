@@ -23,7 +23,7 @@ phases:
       - echo AWS_REGION=${AWS_REGION} >> .env.production
       - echo AWS_ACCESS_KEY=${AWS_ACCESS_KEY} >> .env.testing
       - echo AWS_SECRET_KEY=${AWS_SECRET_KEY} >> .env.testing
-      - echo AWS_DYNAMODB_TABLE_PROD=${AWS_DYNAMODB_TABLE_PROD} >> .env.testing
+      - echo AWS_DYNAMODB_TABLE_TEST=${AWS_DYNAMODB_TABLE_TEST} >> .env.testing
       - echo AWS_REGION=${AWS_REGION} >> .env.testing
   build:
     commands:
