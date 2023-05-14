@@ -6,9 +6,9 @@ env:
     ECR_REGION: us-east-1
     CONTAINER_NAME: lks-order-container
     IMAGE_REPO: lks-order-image
-    AWS_REGION:
-    AWS_DYNAMODB_TABLE_PROD:
-    AWS_DYNAMODB_TABLE_TEST:
+    AWS_REGION: us-east-1
+    AWS_DYNAMODB_TABLE_PROD: lks-order-production	
+    AWS_DYNAMODB_TABLE_TEST: lks-order-testing
 
 phases:
   install:
