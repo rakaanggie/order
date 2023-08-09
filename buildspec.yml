@@ -27,7 +27,7 @@ phases:
       - echo "AWS_DYNAMODB_TABLE_TEST=${AWS_DYNAMODB_TABLE_TEST}" >> .env.testing
       - echo "AWS_REGION=${AWS_REGION}" >> .env.testing
   build:
-    comands:
+    commands:
       - echo "Run unit testing and build docker image"
       - npm install
       - npm run test
