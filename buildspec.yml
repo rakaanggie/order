@@ -2,9 +2,9 @@ version: 0.2
 
 env:
   variables:
-    ECR_IMAGE: lks-catalog-image
+    ECR_IMAGE: lks-order-image
     ECR_REGION: us-east-1
-    CONTAINER_NAME: lks-catalog-container
+    CONTAINER_NAME: lks-order-container
     AWS_DYNAMODB_TABLE_PROD: lks-order-production
     AWS_REGION: us-east-1
     AWS_DYNAMODB_TABLE_TEST: lks-order-testing
